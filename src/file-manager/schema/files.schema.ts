@@ -8,4 +8,4 @@ export const FilesSchema = new mongoose.Schema({
     size: Number,
     created_at: { type: Date, default: Date.now },
     updated_at: { type: Date, default: Date.now, select: false }
-} ,{ collection: 'dog_files' });
+} ,{ collection: 'files' });
