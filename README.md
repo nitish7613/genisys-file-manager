@@ -28,15 +28,15 @@
    - Downloads the physical image file with the given file ID.
    - Provides validation if the file does not exist.
 
-**Note**: All the above features are authorized using a static Bearer Auth token.
+**Note**: All the above features are authorized using a static Bearer Auth token. Also prepared swagger api documentation to test all apis.
 
 ## Setup Instructions
 
 1. **Setup Node.js**
-   - Ensure Node.js version > 18 is installed on your local machine.
+   - Ensure Node.js version >= 18 is installed on your local machine.
 
 2. **Setup MongoDB**
-   - Ensure MongoDB version > 4.4 is installed on your local machine.
+   - Ensure MongoDB version >= 4.4 is installed on your local machine.
 
 3. **Clone the Repository**
    - Run `git clone https://github.com/nitish7613/genisys-file-manager.git`
@@ -55,7 +55,7 @@
    - Run `npm start`
 
 8. **Access API Documentation**
-   - Once the server has started successfully, you can access the API documentation at `http://localhost:3000/documentation`.
+   - Once the server has started successfully, you can access the API documentation at `http://localhost:3000/documentation`. We have prepared detailed swagger api documentation.
 
 9. **Authorization**
    - Each endpoint is protected with a static Bearer Token. The token value is `a9f8e6b3c5d4f2e8b1c3d9a7f6b8e5c4`, as specified in the `AUTH_TOKEN` in the `.env` file. Ensure to add this token in the Authorization header.
