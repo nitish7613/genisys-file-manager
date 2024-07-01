@@ -1,73 +1,66 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Genisys File Manager
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Features
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+1. **Upload Image File**
+   - Feature to upload image files with proper validation of file extensions (png, jpg, jpeg).
+   - Handles all error scenarios. If there is any error during file upload, the uploaded file is deleted to prevent unnecessary space consumption.
+   - Uses the Sharp library to compress images.
+  
+2. **Update Image File using File ID**
+   - Users can upload a new file to update an existing file. The old file is replaced in the MongoDB database and the physical location.
+   - Includes all validations for the upload file.
+   - Uses the Sharp library to compress images.
+   
+3. **Delete Image File using File ID**
+   - Provides a proper validation message if no file exists with the given file ID.
+   - Permanently deletes the file from MongoDB and the physical location.
+   
+4. **List Files with Pagination**
+   - Lists files with pagination (page number and number of records per page).
+   - Default values: page = 1 and limit = 10.
+   
+5. **Get File Detail using File ID**
+   - Fetches file metadata details from the MongoDB database.
+   - Provides validation if the file does not exist with the given file ID.
+   
+6. **Download File using File ID**
+   - Downloads the physical image file with the given file ID.
+   - Provides validation if the file does not exist.
 
-## Description
+**Note**: All the above features are authorized using a static Bearer Auth token.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Setup Instructions
 
-## Installation
+1. **Setup Node.js**
+   - Ensure Node.js version > 18 is installed on your local machine.
 
-```bash
-$ npm install
-```
+2. **Setup MongoDB**
+   - Ensure MongoDB version > 4.4 is installed on your local machine.
 
-## Running the app
+3. **Clone the Repository**
+   - Run `git clone https://github.com/nitish7613/genisys-file-manager.git`
+   
+4. **Navigate to Project Directory**
+   - Run `cd genisys-file-manager`
 
-```bash
-# development
-$ npm run start
+5. **Install Dependencies**
+   - Run `npm install --include=optional`
+   
+6. **Configure Environment Variables**
+   - Edit the `.env` file at the root level and set `MONGO_URI` according to your MongoDB database URI.
+   - Set `FILE_UPLOAD_PATH` in the `.env` file to the path where you want to store all locally uploaded files. Ensure the necessary permissions to store files are provided using `sudo chmod -R 777 <FILE_UPLOAD_PATH>`.
 
-# watch mode
-$ npm run start:dev
+7. **Start the Server**
+   - Run `npm start`
 
-# production mode
-$ npm run start:prod
-```
+8. **Access API Documentation**
+   - Once the server has started successfully, you can access the API documentation at `http://localhost:3000/documentation`.
 
-## Test
+9. **Authorization**
+   - Each endpoint is protected with a static Bearer Token. The token value is `a9f8e6b3c5d4f2e8b1c3d9a7f6b8e5c4`, as specified in the `AUTH_TOKEN` in the `.env` file. Ensure to add this token in the Authorization header.
 
-```bash
-# unit tests
-$ npm run test
+10. **Ready to Use**
+    - You can now use any API as per your requirement.
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Feel free to explore and utilize the features of the Genisys File Manager!
